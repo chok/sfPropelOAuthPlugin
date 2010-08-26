@@ -1,0 +1,17 @@
+propel:
+  _attributes:      { package: plugins.sfPropelOAuthPlugin.lib.model }
+  
+  token:
+    _attributes:    { phpName: Token }
+    id:             ~
+    name:           { type: varchar, size: 255 }
+    token_key:      { type: clob }
+    token_secret:   { type: clob }
+    user_id:        { type: integer, primaryKey: true, foreignTable: sf_guard_user, foreignReference: id, onDelete: cascade }
+    expire:         { type: integer }
+    params:         { type: clob }
+    identifier:     { type: varchar, size: 255 }
+    status:         { type: varchar, size: 255 }
+    o_auth_version: { type: integer }
+    created_at:     ~
+    updated_at:     ~
