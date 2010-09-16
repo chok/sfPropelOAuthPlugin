@@ -24,6 +24,7 @@ class Token extends BaseToken
 
     $valid = $this->getStatus() == self::STATUS_ACCESS && !empty($key) && !$this->isExpired();
 
+
     if($this->getOAuthVersion() == 1 && $valid)
     {
       $secret = $this->getTokenSecret();
@@ -46,7 +47,7 @@ class Token extends BaseToken
 
   public function getParams()
   {
-    $params = parent::getParams();
+    $params = $this->_get('params');
 
     return (array) json_decode($params);
   }
@@ -60,7 +61,7 @@ class Token extends BaseToken
 
   public function setParams($params)
   {
-    parent::setParams(json_encode($params));
+    $this->_set('params', json_encode($params), false);
   }
 
   public function setParam($key, $value)
@@ -69,5 +70,10 @@ class Token extends BaseToken
     $params[$key] = $value;
 
     $this->setParams($params);
+  }
+
+  public static function getAllStatuses()
+  {
+    return array(self::STATUS_REQUEST, self::STATUS_ACCESS);
   }
 }
