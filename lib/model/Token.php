@@ -47,7 +47,7 @@ class Token extends BaseToken
 
   public function getParams()
   {
-    $params = $this->_get('params');
+    $params = parent::getParams('params');
 
     return (array) json_decode($params);
   }
@@ -61,7 +61,7 @@ class Token extends BaseToken
 
   public function setParams($params)
   {
-    $this->_set('params', json_encode($params), false);
+    parent::setParams(json_encode($params));
   }
 
   public function setParam($key, $value)
@@ -76,4 +76,14 @@ class Token extends BaseToken
   {
     return array(self::STATUS_REQUEST, self::STATUS_ACCESS);
   }
+
+
+    /**
+     * ?
+     */
+    public function getUser()
+    {
+        return $this->getsfGuardUser();
+    }
+
 }

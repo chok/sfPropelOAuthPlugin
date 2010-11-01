@@ -82,7 +82,7 @@ class TokenPeer extends BaseTokenPeer
 
   public static function deleteTokens($name = null, $user = null, $status = null)
   {
-    $c = $this->getDeleteTokenCriteria($name, $user, $status);
+    $c = self::getDeleteTokenCriteria($name, $user, $status);
 
     self::doDelete($c);
   }
