@@ -102,6 +102,6 @@ class TokenPeer extends BaseTokenPeer
     $c = new Criteria();
     $c->add(TokenPeer::USER_ID, $user_id);
 
-    return self::doSelectOne($c);
+    return self::doSelect($c);
   }
 }
